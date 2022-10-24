@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 
-export default function Pokemon() {
+export default function Pokemon({ poke }) {
   return (
     <>
-      <h1>Pokemon go here</h1>
-      <h2>pepepe</h2>
+      <div key={poke.name}>
+        <p key={poke.name}>{poke.name}</p>
+        {/* <img src={poke.sprites.front_default} alt={poke.name}></img> */}
+      </div>
     </>
   )
 }
