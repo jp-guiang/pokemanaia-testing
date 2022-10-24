@@ -8,6 +8,10 @@ import { getPokemon } from '../apis/apiClient'
 
 jest.mock('../apis/apiClient')
 
+beforeEach(() => {
+  jest.clearAllMocks()
+})
+
 describe('<Home/>', () => {
   it('renders all of the required UI and information', async () => {
     const fakePoke = { results: [{ name: 'pepe' }, { name: 'ga' }] }
