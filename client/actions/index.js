@@ -1,4 +1,4 @@
-import { getFruits } from '../apis/fruits'
+import { getPokemon } from '../apis/apiClient'
 
 export const SET_FRUITS = 'SET_FRUITS'
 
@@ -11,7 +11,7 @@ export function setFruits(fruits) {
 
 export function fetchFruits() {
   return (dispatch) => {
-    return getFruits().then((fruits) => {
+    return getPokemon().then((fruits) => {
       dispatch(setFruits(fruits))
     })
   }
