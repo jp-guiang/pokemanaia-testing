@@ -23,4 +23,13 @@ describe('<Home/>', () => {
       expect(pokeName).toHaveTextContent('pepe')
     })
   })
+
+  it('should show error message when api call fails', async () => {
+    getPokemon.mockRejectedValue({})
+    render(<Home />)
+    await waitFor(() => {
+      const errMess = screen.getByText('Could not load Pokemon from PokeApi')
+      expect(errMess).toHaveTextContent('Could not load Pokemon from PokeApi')
+    })
+  })
 })
