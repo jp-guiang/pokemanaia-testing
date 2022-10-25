@@ -13,7 +13,19 @@ beforeEach(() => {
 })
 
 describe('<Home/>', () => {
-  it('renders all of the required UI and information', async () => {
+  it('prompts user to choose pokemon', async () => {
+    const fakePoke = { results: [{ name: 'pepe' }, { name: 'ga' }] }
+    getPokemon.mockResolvedValue(Promise.resolve(fakePoke))
+    render(<Home />)
+
+    await waitFor(() => {
+      const userPrompt = screen.getByRole('heading', { level: 1 })
+      expect(userPrompt).toBeInTheDocument()
+      expect(userPrompt).toHaveTextContent('Choose your Pokémon!')
+    })
+  })
+
+  it('pokemon from pokeapi', async () => {
     const fakePoke = { results: [{ name: 'pepe' }, { name: 'ga' }] }
     getPokemon.mockResolvedValue(Promise.resolve(fakePoke))
     render(<Home />)
