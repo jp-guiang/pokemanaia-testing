@@ -1,22 +1,37 @@
 import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { act } from 'react-dom/test-utils'
 
 import Home from './Home'
 
-import { getPokemon } from '../apis/apiClient'
+import { getPokeInfo, getPokemon } from '../apis/apiClient'
 
 jest.mock('../apis/apiClient')
 
+let container
+
 beforeEach(() => {
+  container = document.createElement('div')
+  document.body.appendChild(container)
   jest.clearAllMocks()
+})
+
+afterEach(() => {
+  document.body.removeChild(container)
+  container = null
 })
 
 describe('<Home/>', () => {
   it('prompts user to choose pokemon', async () => {
-    const fakePoke = { results: [{ name: 'pepe' }, { name: 'ga' }] }
-    getPokemon.mockResolvedValue(Promise.resolve(fakePoke))
-    render(<Home />)
+    const fakePokeList = { results: [{ name: 'pepe' }] }
+    const fakePokedex = { name: 'bulby' }
+    getPokemon.mockResolvedValue(Promise.resolve(fakePokeList))
+    getPokeInfo.mockResolvedValue(Promise.resolve(fakePokedex))
+
+    act(() => {
+      render(<Home />)
+    })
 
     await waitFor(() => {
       const userPrompt = screen.getByRole('heading', { level: 1 })
@@ -25,14 +40,21 @@ describe('<Home/>', () => {
     })
   })
 
-  it('pokemon from pokeapi', async () => {
-    const fakePoke = { results: [{ name: 'pepe' }, { name: 'ga' }] }
-    getPokemon.mockResolvedValue(Promise.resolve(fakePoke))
-    render(<Home />)
+  it('get pokemon from pokeapi', async () => {
+    const fakePokeList = {
+      results: [{ name: 'pepe' }],
+    }
+    const fakePokedex = { name: 'bulby' }
+    getPokemon.mockResolvedValue(Promise.resolve(fakePokeList))
+    getPokeInfo.mockResolvedValue(Promise.resolve(fakePokedex))
+
+    act(() => {
+      render(<Home />)
+    })
 
     await waitFor(() => {
-      const pokeName = screen.getByText('pepe')
-      expect(pokeName).toHaveTextContent('pepe')
+      const pokeName = screen.getByText('bulby')
+      expect(pokeName).toHaveTextContent('bulby')
     })
   })
 

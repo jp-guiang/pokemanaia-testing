@@ -3,14 +3,12 @@ import { getPokemon, getPokeInfo } from '../apis/apiClient'
 import Pokemon from './Pokemon'
 
 export default function Home() {
-  const [pokeList, setList] = useState([])
   const [apiError, setError] = useState(false)
   const [pokedex, setPokedex] = useState([])
 
   useEffect(() => {
     getPokemon()
       .then((list) => {
-        setList(list.results)
         setError(false)
         return list.results
       })
@@ -23,14 +21,11 @@ export default function Home() {
       .then((pokeData) => {
         setPokedex(pokeData)
       })
-
       .catch((err) => {
         console.error(err)
         setError(true)
       })
   }, [])
-
-  console.log(pokedex)
 
   return apiError ? (
     <h1>Could not load Pokemon from PokeApi</h1>
@@ -39,7 +34,7 @@ export default function Home() {
       <h1>Choose your Pokémon!</h1>
       <h2>Test</h2>
 
-      {pokeList.map((pokemon) => {
+      {pokedex.map((pokemon) => {
         return <Pokemon key={pokemon.name} poke={pokemon} />
       })}
     </>
