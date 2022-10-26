@@ -5,7 +5,7 @@ export default function Pokemon({ poke }) {
     <>
       <div key={poke.name}>
         <p key={poke.name}>{poke.name}</p>
-        {/* <img src={poke.sprites.front_default} alt={poke.name}></img> */}
+        <img src={poke.sprites.front_default} alt={poke.name}></img>
       </div>
     </>
   )

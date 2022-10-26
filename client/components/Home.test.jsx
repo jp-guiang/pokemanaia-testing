@@ -9,26 +9,22 @@ import { getPokeInfo, getPokemon } from '../apis/apiClient'
 
 jest.mock('../apis/apiClient')
 
-let container
-
 beforeEach(() => {
-  container = document.createElement('div')
-  document.body.appendChild(container)
   jest.clearAllMocks()
 })
 
-afterEach(() => {
-  document.body.removeChild(container)
-  container = null
-})
-
 describe('<Home/>', () => {
-  it('prompts user to choose pokemon', async () => {
-    const fakePokeList = { results: [{ name: 'pepe' }] }
-    const fakePokedex = { name: 'bulby' }
-    getPokemon.mockResolvedValue(Promise.resolve(fakePokeList))
-    getPokeInfo.mockResolvedValue(Promise.resolve(fakePokedex))
+  const fakePokeList = { results: [{ name: 'pepe' }] }
+  const fakePokedex = {
+    name: 'bulby',
+    sprites: {
+      front_default: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`,
+    },
+  }
+  getPokemon.mockResolvedValue(Promise.resolve(fakePokeList))
+  getPokeInfo.mockResolvedValue(Promise.resolve(fakePokedex))
 
+  it('prompts user to choose pokemon', async () => {
     act(() => {
       render(<Home />)
     })
@@ -41,13 +37,6 @@ describe('<Home/>', () => {
   })
 
   it('get pokemon from pokeapi', async () => {
-    const fakePokeList = {
-      results: [{ name: 'pepe' }],
-    }
-    const fakePokedex = { name: 'bulby' }
-    getPokemon.mockResolvedValue(Promise.resolve(fakePokeList))
-    getPokeInfo.mockResolvedValue(Promise.resolve(fakePokedex))
-
     act(() => {
       render(<Home />)
     })
@@ -55,6 +44,17 @@ describe('<Home/>', () => {
     await waitFor(() => {
       const pokeName = screen.getByText('bulby')
       expect(pokeName).toHaveTextContent('bulby')
+    })
+  })
+
+  it('load pokemon picture from pokeapi', async () => {
+    act(() => {
+      render(<Home />)
+    })
+
+    await waitFor(() => {
+      const pokePic = screen.getByRole('img', { alt: /bulby/i })
+      expect(pokePic.alt).toBe('bulby')
     })
   })
 
