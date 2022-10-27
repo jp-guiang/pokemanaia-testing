@@ -36,7 +36,7 @@ describe('<Home/>', () => {
     })
   })
 
-  it('get pokemon from pokeapi', async () => {
+  it('display pokemon name from pokeapi', async () => {
     act(() => {
       render(<Home />)
     })
@@ -47,7 +47,7 @@ describe('<Home/>', () => {
     })
   })
 
-  it('load pokemon picture from pokeapi', async () => {
+  it('display pokemon picture from pokeapi', async () => {
     act(() => {
       render(<Home />)
     })
