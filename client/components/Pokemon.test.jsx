@@ -1,14 +1,31 @@
 import React from 'react'
-import { screen, render } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Pokemon from './Pokemon'
 
 describe('<Pokemon/>', () => {
+  const fakePoke = {
+    name: 'pepe',
+    stats: [
+      { base_stat: 50, effort: 1, stat: { name: 'hp' } },
+      { base_stat: 50, effort: 1, stat: { name: 'attack' } },
+    ],
+    sprites: {
+      front_default: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`,
+    },
+  }
   it('renders Pokemon and pokemon picture', () => {
-    const fakePoke = { name: 'pepe' }
     render(<Pokemon poke={fakePoke} />)
     const pokemonName = screen.getByText('pepe')
     expect(pokemonName).toHaveTextContent('pepe')
+  })
+
+  it('renders pokemon stats on hover', () => {
+    render(<Pokemon poke={fakePoke} />)
+    fireEvent.mouseOver(document.getElementById('test'))
+    screen.debug()
+    const pokemonHp = screen.getByText('Hp:')
+    expect(pokemonHp).toHaveTextContent('Hp:')
   })
 })
