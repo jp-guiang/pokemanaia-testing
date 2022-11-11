@@ -1,11 +1,11 @@
 import { getPokemon } from '../apis/apiClient'
 
-export const SET_POKE = 'SET_POKE'
+export const ADD_POKE = 'ADD_POKE'
 
-export function setPoke(poke) {
+export function addPoke(poke) {
   console.log('action', poke)
   return {
-    type: SET_POKE,
+    type: ADD_POKE,
     payload: poke,
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getPokemon, getPokeInfo } from '../apis/apiClient'
 import { useDispatch } from 'react-redux'
-import { setPoke } from '../actions/poke'
+import { addPoke } from '../actions/poke'
 import Pokemon from './Pokemon'
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
 
   function selectPoke(poke) {
     console.log(poke.name)
-    dispatch(setPoke(poke))
+    dispatch(addPoke(poke))
   }
 
   return apiError ? (
