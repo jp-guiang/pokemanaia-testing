@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import Home from './Home'
 
 function App() {
   return (
     <>
-      <Home />
+      <div className="app">
+        <Home />
+      </div>
     </>
   )
 }
