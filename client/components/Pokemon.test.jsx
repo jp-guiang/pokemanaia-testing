@@ -24,8 +24,18 @@ describe('<Pokemon/>', () => {
   it('renders pokemon stats on hover', () => {
     render(<Pokemon poke={fakePoke} />)
     fireEvent.mouseOver(document.getElementById('test'))
-    screen.debug()
     const pokemonHp = screen.getByText('Hp:')
+    const pokemonAttack = screen.getByText('Attack:')
     expect(pokemonHp).toHaveTextContent('Hp:')
+    expect(pokemonAttack).toHaveTextContent('Attack:')
+  })
+
+  it('does not render pokemon stats on hover', () => {
+    render(<Pokemon poke={fakePoke} />)
+    fireEvent.mouseOut(document.getElementById('test'))
+    const pokemonHp = screen.queryByText('Hp:')
+    expect(pokemonHp).toBeNull()
+    const pokemonAttack = screen.queryByText('Attack:')
+    expect(pokemonAttack).toBeNull()
   })
 })
