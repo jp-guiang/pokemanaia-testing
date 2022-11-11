@@ -31,12 +31,15 @@ export default function Home() {
     <h1>Could not load Pokemon from PokeApi</h1>
   ) : (
     <>
-      <h1>Choose your Pokémon!</h1>
-      <h2>Test</h2>
-
-      {pokedex.map((pokemon) => {
-        return <Pokemon key={pokemon.name} poke={pokemon} />
-      })}
+      <div className="less-wide">
+        <h1>Choose your Pokémon!</h1>
+        <h2>Test</h2>
+        <div className="selection-grid">
+          {pokedex.map((pokemon) => {
+            return <Pokemon key={pokemon.name} poke={pokemon} />
+          })}
+        </div>
+      </div>
     </>
   )
 }
