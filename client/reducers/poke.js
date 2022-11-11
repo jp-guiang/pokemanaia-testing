@@ -1,4 +1,4 @@
-import { SET_POKE } from '../actions/poke'
+import { ADD_POKE } from '../actions/poke'
 
 const initialState = []
 
@@ -6,8 +6,8 @@ const reducer = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {
-    case SET_POKE:
-      return payload
+    case ADD_POKE:
+      return [...state, payload]
     default:
       return state
   }

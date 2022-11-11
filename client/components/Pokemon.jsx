@@ -26,7 +26,7 @@ export default function Pokemon({ poke }) {
           <img src={poke.sprites.front_default} alt={poke.name}></img>
         </div>
         {isHovering && (
-          <div>
+          <div className="stats">
             {poke.stats.map((info) => {
               if (
                 info.stat.name == 'attack' ||
@@ -35,11 +35,7 @@ export default function Pokemon({ poke }) {
               ) {
                 return (
                   <p key={info.stat.name}>
-                    <strong>
-                      {info.stat.name.charAt(0).toUpperCase() +
-                        info.stat.name.slice(1)}
-                      :
-                    </strong>{' '}
+                    <strong>{info.stat.name.toUpperCase()}:</strong>{' '}
                     {info.base_stat}
                   </p>
                 )

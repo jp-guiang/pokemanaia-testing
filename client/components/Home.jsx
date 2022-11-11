@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { getPokemon, getPokeInfo } from '../apis/apiClient'
-import { useDispatch } from 'react-redux'
-import { setPoke } from '../actions/poke'
+import { useDispatch, useSelector } from 'react-redux'
+import { addPoke } from '../actions/poke'
 import Pokemon from './Pokemon'
+import Team from './Team'
 
 export default function Home() {
   const [apiError, setError] = useState(false)
   const [pokedex, setPokedex] = useState([])
   const dispatch = useDispatch()
+  const team = useSelector((state) => state.poke)
 
   useEffect(() => {
     getPokemon()
@@ -31,8 +33,9 @@ export default function Home() {
   }, [])
 
   function selectPoke(poke) {
-    console.log(poke.name)
-    dispatch(setPoke(poke))
+    if (team.length < 6) {
+      dispatch(addPoke(poke))
+    }
   }
 
   return apiError ? (
@@ -41,7 +44,12 @@ export default function Home() {
     <>
       <div className="home-display">
         <h1>Choose your Pokémon!</h1>
-        <h2>Test</h2>
+        <div className="select-team">
+          <div className="team">
+            <Team />
+          </div>
+          <p>Choose your team</p>
+        </div>
         <div className="poke-list">
           {pokedex.map((pokemon) => {
             return (
