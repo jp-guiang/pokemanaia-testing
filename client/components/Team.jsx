@@ -6,7 +6,7 @@ export default function Team() {
 
   return (
     <>
-      <div>
+      <div className="poke-list">
         {team.map((poke, index) => {
           return (
             <div key={poke.name + index}>
