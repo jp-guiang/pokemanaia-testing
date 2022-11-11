@@ -3,6 +3,7 @@ import { getPokemon, getPokeInfo } from '../apis/apiClient'
 import { useDispatch } from 'react-redux'
 import { addPoke } from '../actions/poke'
 import Pokemon from './Pokemon'
+import Team from './Team'
 
 export default function Home() {
   const [apiError, setError] = useState(false)
@@ -41,7 +42,8 @@ export default function Home() {
     <>
       <div className="home-display">
         <h1>Choose your Pokémon!</h1>
-        <h2>Test</h2>
+        <h2>Your Team</h2>
+        <Team />
         <div className="poke-list">
           {pokedex.map((pokemon) => {
             return (
