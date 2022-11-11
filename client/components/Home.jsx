@@ -27,6 +27,10 @@ export default function Home() {
       })
   }, [])
 
+  function selectPoke(pokemon) {
+    console.log(pokemon.name)
+  }
+
   return apiError ? (
     <h1>Could not load Pokemon from PokeApi</h1>
   ) : (
@@ -36,7 +40,15 @@ export default function Home() {
         <h2>Test</h2>
         <div className="poke-list">
           {pokedex.map((pokemon) => {
-            return <Pokemon key={pokemon.name} poke={pokemon} />
+            return (
+              <button
+                className="poke-button"
+                key={pokemon.name}
+                onClick={() => selectPoke(pokemon)}
+              >
+                <Pokemon poke={pokemon} />
+              </button>
+            )
           })}
         </div>
       </div>
