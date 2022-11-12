@@ -18,7 +18,7 @@ describe('<Team/>', () => {
   it('lists the pokemon team', () => {
     useSelector.mockReturnValue(fakeTeam)
     render(<Team />)
-    screen.debug()
-    expect(1).toBe(1)
+    const fakeMember = screen.getByRole('img', { alt: 'bulby' })
+    expect(fakeMember.alt).toBe('bulby')
   })
 })
