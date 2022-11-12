@@ -2,12 +2,14 @@ import React from 'react'
 import { screen, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { act } from 'react-dom/test-utils'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Home from './Home'
 
 import { getPokeInfo, getPokemon } from '../apis/apiClient'
 
 jest.mock('../apis/apiClient')
+jest.mock('react-redux')
 
 beforeEach(() => {
   jest.clearAllMocks()
@@ -21,12 +23,16 @@ describe('<Home/>', () => {
       front_default: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`,
     },
   }
+  const fakeDispatch = jest.fn()
   getPokemon.mockResolvedValue(Promise.resolve(fakePokeList))
   getPokeInfo.mockResolvedValue(Promise.resolve(fakePokedex))
+  useSelector.mockReturnValue(fakePokedex)
+  useDispatch.mockReturnValue(fakeDispatch)
 
   it('prompts user to choose pokemon', async () => {
     act(() => {
       render(<Home />)
+      screen.debug()
     })
 
     await waitFor(() => {

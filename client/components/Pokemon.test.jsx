@@ -25,7 +25,7 @@ describe('<Pokemon/>', () => {
     render(<Pokemon poke={fakePoke} />)
     fireEvent.mouseOver(document.getElementById('test'))
     const pokemonHp = screen.getByText('HP:')
-    const pokemonAttack = screen.getByText('ATACK:')
+    const pokemonAttack = screen.getByText('ATTACK:')
     expect(pokemonHp).toHaveTextContent('HP:')
     expect(pokemonAttack).toHaveTextContent('ATTACK:')
   })
