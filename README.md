@@ -26,15 +26,15 @@ See the instructions [here](https://docs.github.com/en/free-pro-team@latest/gith
 #### **From the command line**
 
 ```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
+git clone https://github.com/jp-guiang/pokemanaia-testing.git
+cd pokemanaia-testing
+npm install
+npm run dev
+
+```
 open your browser
 find the server running on [http://localhost:3000](http://localhost:3000).
 enjoy!
-
-```
 ### Disclaimer
 This app was made with fair use in mind for educational purposes and all rights belong to their respective owners.  
 This app is not affiliated, endorsed or supported by Nintendo in any way, some images used in this app are copyrighted and supported under fair use, Pokemon and Pokemon character names are trademarks of Nintendo.
