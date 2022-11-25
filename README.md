@@ -1,7 +1,8 @@
-# Boilerplate: Fullstack
+# Pokemanaia Testing
 
-## Setup
+Pokemanaia (https://pokemanaia.herokuapp.com/) is the final group project that I was involved with, while studying at Dev Academy Aotearoa. This was our teams attempt at gamedev in a week. We chose to make a pokemon based game as it had a lot of learning new tech required to make it work, aswell as a lot of room for stretch and additional features we wanted to add.
 
+The purpose of this personal project is to recreate the Home page feature of the game app, but to have more focus on testing the funcionality of the Home page. 
 ### What's included
 
 This repo includes:
