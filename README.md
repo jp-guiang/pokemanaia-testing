@@ -7,16 +7,18 @@ The purpose of this personal project is to recreate the Home page feature of the
 
 This repo includes:
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
+
+* multiple React components encompassing the Home page of the game (`<App />, <Home />, < Pokemon/>, <Team />`)
+* `< Home />` is the parent component of `< Pokemon/> < Team/>`
+* `< Home />` uses api endpoints to get a list of first generation Pokemon and then sends that info to the `<Pokemon/>` component
+* `< Pokemon/>` component displays the picture of the Pokemon and it's name
+* `< Pokemon/>` when hovering over the Pokemon components the user can see Pokemon stats
+* each `< Pokemon/>` component is also a button that saves the Pokemon as one of the users team members into a redux state]
+* `<Team />` is a simple component that displays the users current team
+* simple API endpoints (`/api/apiClient`)
 * configuration for Jest and testing library
 * configuration for server-side debugging in VS Code
-* a single client-side test (`client/components/App.test.js`)
-
-### Installation
-
+* a client-side tests for all components
 #### **From the Github UI**
 
 See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
