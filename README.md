@@ -32,9 +32,9 @@ npm install
 npm run dev
 
 ```
-open your browser
-find the server running on [http://localhost:3000](http://localhost:3000).
-enjoy!
+* open your browser
+* find the server running on [http://localhost:3000](http://localhost:3000).
+* enjoy!
 ### Disclaimer
 This app was made with fair use in mind for educational purposes and all rights belong to their respective owners.  
 This app is not affiliated, endorsed or supported by Nintendo in any way, some images used in this app are copyrighted and supported under fair use, Pokemon and Pokemon character names are trademarks of Nintendo.
