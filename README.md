@@ -30,7 +30,6 @@ git clone https://github.com/jp-guiang/pokemanaia-testing.git
 cd pokemanaia-testing
 npm install
 npm run dev
-
 ```
 * open your browser
 * find the server running on [http://localhost:3000](http://localhost:3000).
